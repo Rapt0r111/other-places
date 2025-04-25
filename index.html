@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Турагентство «Другие Места»</title>
+  <!-- Tailwind CSS + конфиг -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2ABF66',      // фирменный зелёный
+            accent: '#F472B6',       // яркий коралл
+            dark: '#1A202C',
+            light: '#F7FAFC'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+          },
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KU1ZQ+..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Custom styles */
+    .glass-effect {
+      @apply bg-white/80 backdrop-blur-md border border-white/30;
+    }
+
+    .card-hover {
+      @apply transition-transform duration-300 hover:translate-y-[-8px];
+    }
+
+    .input-style {
+      @apply bg-white/90 border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent focus:outline-none shadow-sm transition-all duration-200;
+    }
+
+    .btn-primary {
+      @apply bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary/90 hover:shadow-lg transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+    }
+
+    .btn-accent {
+      @apply bg-accent text-white px-6 py-3 rounded-full font-medium hover:bg-accent/90 hover:shadow-lg transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    
+    /* Ensure the WHATSAPP BAR doesn't cause horizontal overflow */
+    .fixed.bottom-0.inset-x-0 {
+      width: 100%;
+      max-width: 100vw;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-light via-blue-50 to-purple-50 text-dark font-sans min-h-screen">
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-50 glass-effect shadow-md backdrop-blur-lg bg-white/60">
+    <div class="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-3">
+      <!-- Logo and Brand -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="relative overflow-hidden rounded-xl px-2 py-1 bg-white/50 shadow-sm ">
+          <img src="https://drm39.ru/bitrix/templates/travel/images/header/logotype.png" alt="Лого"
+            class="h-11 transform transition-all duration-300 group-hover:scale-110" />
+        </div>
+        <div class="flex flex-col hidden xl:block">
+          <span class="font-bold text-lg text-primary whitespace-nowrap">Другие Места</span>
+          <span class="text-xs text-gray-600 italic whitespace-nowrap">Мы другие. За это нас выбирают!</span>
+        </div>
+      </a>
+
+      <!-- Main Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#"
+          class="flex items-center space-x-2 text-gray-700 hover:text-primary font-medium whitespace-nowrap transition-colors duration-200">
+          <i class="fas fa-fire text-accent"></i>
+          <span>Горящие туры</span>
+        </a>
+        <a href="#"
+          class="flex items-center space-x-2 text-gray-700 hover:text-primary font-medium whitespace-nowrap transition-colors duration-200">
+          <i class="fas fa-map-marked-alt text-red-500"></i>
+          <span>Туры по России</span>
+        </a>
+        <a href="#"
+          class="flex items-center space-x-2 text-gray-700 hover:text-primary font-medium whitespace-nowrap transition-colors duration-200">
+          <i class="fas fa-phone-alt text-blue-500"></i>
+          <span>Контакты</span>
+        </a>
+        <button class="hidden lg:flex items-center space-x-2 btn-primary whitespace-nowrap">
+          <i class="fas fa-search"></i>
+          <span>Поиск туров</span>
+        </button>
+      </nav>
+
+      <!-- Contact Elements -->
+      <div class="flex items-center space-x-5 pl-1">
+        <div class="hidden lg:flex items-center space-x-1 text-primary whitespace-nowrap">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="text-sm font-medium">Калининград</span>
+        </div>
+
+        <a href="tel:+74012611000" class="flex flex-col items-end group">
+          <span
+            class="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors whitespace-nowrap">+7
+            4012 611000</span>
+          <span class="text-xs text-accent hover:underline whitespace-nowrap">Заказать звонок</span>
+        </a>
+
+        <button id="mobile-menu-button" class="xl:hidden text-gray-700 hover:text-primary transition p-2" aria-label="Открыть меню">
+          <i class="fas fa-bars fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE SIDEBAR -->
+  <div id="mobile-sidebar" class="fixed top-0 left-0 bottom-0 w-72 bg-white shadow-lg p-6 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden">
+    <div class="flex justify-between items-center mb-6">
+      <div class="font-bold text-lg text-primary">Другие Места</div>
+      <button id="close-sidebar" class="text-gray-700 hover:text-primary p-2">
+        <i class="fas fa-times fa-lg"></i>
+      </button>
+    </div>
+    
+    <nav class="space-y-5">
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-fire text-accent w-6 text-center"></i><span class="font-medium">Горящие туры</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-bus text-blue-500 w-6 text-center"></i><span class="font-medium">Автобусные туры</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-globe text-indigo-500 w-6 text-center"></i><span class="font-medium">В Калининград</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-flag text-red-500 w-6 text-center"></i><span class="font-medium">Туры по России</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-star text-yellow-500 w-6 text-center"></i><span class="font-medium">Экскурсии</span>
+      </a>
+    </nav>
+
+    <div class="mt-8 flex justify-center space-x-6 text-xl">
+      <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-telegram-plane"></i></a>
+      <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-vk"></i></a>
+      <a href="#"
+        class="text-gray-600 hover:text-orange-500 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-odnoklassniki"></i></a>
+    </div>
+
+    <div class="mt-8 bg-primary/10 rounded-xl p-5 shadow-sm border border-primary/20">
+      <button class="w-full btn-accent flex items-center justify-center space-x-2 py-4">
+        <i class="fas fa-compass"></i><span>Подобрать тур</span>
+      </button>
+      <p class="mt-3 text-center text-gray-700 text-sm">Бесплатная помощь и подарок при покупке!</p>
+    </div>
+  </div>
+
+  <!-- Overlay for mobile sidebar -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- SIDEBAR -->
+  <aside
+    class="fixed top-20 left-0 bottom-0 w-72 glass-effect shadow-lg p-6 hidden xl:block z-40 transform transition-transform duration-300">
+    <nav class="space-y-5">
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-fire text-accent w-6 text-center"></i><span class="font-medium">Горящие туры</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-bus text-blue-500 w-6 text-center"></i><span class="font-medium">Автобусные туры</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-globe text-indigo-500 w-6 text-center"></i><span class="font-medium">В Калининград</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-flag text-red-500 w-6 text-center"></i><span class="font-medium">Туры по России</span>
+      </a>
+      <a href="#"
+        class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
+        <i class="fas fa-star text-yellow-500 w-6 text-center"></i><span class="font-medium">Экскурсии</span>
+      </a>
+    </nav>
+
+    <div class="mt-12 flex justify-center space-x-6 text-xl">
+      <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-telegram-plane"></i></a>
+      <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-vk"></i></a>
+      <a href="#"
+        class="text-gray-600 hover:text-orange-500 transition-colors duration-200 transform hover:scale-125"><i
+          class="fab fa-odnoklassniki"></i></a>
+    </div>
+
+    <div class="mt-16 bg-white/20 rounded-xl p-5 shadow-inner border border-white/50">
+      <button class="w-full btn-accent flex items-center justify-center space-x-2 py-4">
+        <i class="fas fa-compass"></i><span>Подобрать тур</span>
+      </button>
+      <p class="mt-3 text-center text-gray-700 text-sm">Бесплатная помощь и подарок при покупке!</p>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="pt-28 pb-20 xl:ml-72">
+    <div class=" px-4 ">
+      <!-- HERO -->
+      <section class="relative bg-cover bg-center rounded-2xl overflow-hidden animate-fade-in shadow-2xl mb-20"> 
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80'); min-height:500px; filter: brightness(0.8);"></div>
+        
+        <div class="relative z-10 w-full mx-auto text-center py-16 md:py-20 space-y-6 animate-slide-up">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-md px-4">Туры из Калининграда</h1>
+          <p class="text-white/90 text-lg sm:text-xl px-4">Горящие предложения от турфирмы «Другие места»</p>
+          
+          <!-- Price timer -->
+          <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 text-white px-4">
+            <span>До обновления цен:</span>
+            <div class="flex space-x-3">
+              <div class="bg-black/40 rounded-lg px-4 py-2 text-center min-w-[60px]">
+                <div class="text-2xl font-bold">00</div>
+                <div class="text-xs uppercase">часов</div>
+              </div>
+              <div class="bg-black/40 rounded-lg px-4 py-2 text-center min-w-[60px]">
+                <div class="text-2xl font-bold">00</div>
+                <div class="text-xs uppercase">минут</div>
+              </div>
+              <div class="bg-black/40 rounded-lg px-4 py-2 text-center min-w-[60px]">
+                <div class="text-2xl font-bold">01</div>
+                <div class="text-xs uppercase">секунд</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Search form -->
+          <div class="glass-effect p-4 sm:p-6 md:p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto backdrop-blur-sm bg-white/30 border border-white/30">
+            <form class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <!-- Toggle Tabs -->
+              <div class="col-span-full flex rounded-full overflow-hidden mb-4 shadow-sm">
+                <button type="button"
+                  class="flex-1 bg-white text-gray-600 py-3 font-medium flex items-center justify-center">
+                  <i class="fas fa-plane-departure mr-2"></i>Туры с перелётом
+                </button>
+                <button type="button"
+                  class="flex-1 bg-gray-200 text-gray-600 py-3 font-medium hover:text-gray-700 transition-colors hover:bg-white/90 flex items-center justify-center">
+                  <i class="fas fa-hotel mr-2"></i>Отели
+                </button>
+              </div>
+
+              <!-- City Input -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-700 group-focus-within:text-primary transition-colors">
+                  <i class="fas fa-plane-departure text-primary"></i>
+                </div>
+                <input type="text" placeholder="Город вылета" value="Калининград"
+                  class="w-full py-3 pl-10 px-4 bg-white/70 border-0 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all text-gray-700" />
+                <label
+                  class="absolute top-0 left-4 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full transition-all">
+                  Откуда
+                </label>
+              </div>
+
+              <!-- Destination Input -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-700 group-focus-within:text-primary transition-colors">
+                  <i class="fas fa-globe-europe text-primary"></i>
+                </div>
+                <input type="text" placeholder="Направление" value="Турция"
+                  class="w-full py-3 pl-10 px-4 bg-white/70 border-0 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all text-gray-700" />
+                <label
+                  class="absolute top-0 left-4 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full transition-all">
+                  Куда
+                </label>
+              </div>
+
+              <!-- Date Input -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-700 group-focus-within:text-primary transition-colors">
+                  <i class="fas fa-calendar-alt text-primary"></i>
+                </div>
+                <input type="text" placeholder="Даты" value="25 апр — 4 мая"
+                  class="w-full py-3 pl-10 px-4 bg-white/70 border-0 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all text-gray-700" />
+                <label
+                  class="absolute top-0 left-4 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full transition-all">
+                  Когда
+                </label>
+              </div>
+
+              <!-- Nights Input -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-700 group-focus-within:text-primary transition-colors">
+                  <i class="fas fa-moon text-primary"></i>
+                </div>
+                <input type="text" placeholder="Ночи" value="6 — 14"
+                  class="w-full py-3 pl-10 px-4 bg-white/70 border-0 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all text-gray-700" />
+                <label
+                  class="absolute top-0 left-4 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full transition-all">
+                  Длительность
+                </label>
+              </div>
+
+              <!-- Travelers Select -->
+              <div class="relative group">
+                <div
+                  class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-700 group-focus-within:text-primary transition-colors">
+                  <i class="fas fa-users text-primary"></i>
+                </div>
+                <select
+                  class="w-full py-3 pl-10 pr-8 bg-white/70 border-0 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:bg-white focus:outline-none transition-all text-gray-700 appearance-none">
+                  <option>2 взрослых</option>
+                  <option>3 взрослых</option>
+                  <option>2 взрослых, 1 ребенок</option>
+                  <option>2 взрослых, 2 ребенка</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-700">
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <label
+                  class="absolute top-0 left-4 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full transition-all">
+                  Кто едет
+                </label>
+              </div>
+
+              <!-- Search Button -->
+              <div class="col-span-full sm:col-span-2 lg:col-span-5 mt-3">
+                <button type="submit"
+                  class="w-full sm:w-auto px-10 py-3 bg-blue-500 text-white rounded-full font-semibold shadow-lg hover:shadow-accent/30 transition-all flex items-center justify-center space-x-2 transform hover:scale-[1.02]">
+                  <i class="fas fa-search"></i>
+                  <span>Найти тур</span>
+                </button>
+              </div>
+
+              <!-- Advanced filters -->
+              <div class="col-span-full flex flex-wrap gap-3 mt-2">
+                <button
+                  class="flex items-center space-x-2 px-4 py-2 rounded-full bg-white text-gray-700 text-sm hover:bg-primary hover:text-blue-500 border border-gray-200 shadow-sm transition-colors">
+                  <i class="fas fa-hotel"></i>
+                  <span>Класс отеля</span>
+                </button>
+                <button
+                  class="flex items-center space-x-2 px-4 py-2 rounded-full bg-white text-gray-700 text-sm hover:bg-primary hover:text-blue-500 border border-gray-200 shadow-sm transition-colors">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Курорт / отель</span>
+                </button>
+                <button
+                  class="flex items-center space-x-2 px-4 py-2 rounded-full bg-white text-gray-700 text-sm hover:bg-primary hover:text-blue-500 border border-gray-200 shadow-sm transition-colors">
+                  <i class="fas fa-utensils"></i>
+                  <span>Питание</span>
+                </button>
+                <button
+                  class="flex items-center space-x-2 px-4 py-2 rounded-full bg-white text-gray-700 text-sm hover:bg-primary hover:text-blue-500 border border-gray-200 shadow-sm transition-colors">
+                  <i class="fas fa-star"></i>
+                  <span>Рейтинг</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- POPULAR DESTINATIONS -->
+      <section class="mt-12 mb-20">
+        <div class="flex items-center justify-between mb-8 px-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Популярные направления</h2>
+          <a href="#" class="text-primary font-medium flex items-center hover:underline">
+            Все направления <i class="fas fa-chevron-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600" alt="Туры по России"
+                class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
+              <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
+                <span class="bg-orange-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Горящий</span>
+                <span
+                  class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">Россия</span>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-600 text-sm">(48 отзывов)</span>
+              </div>
+
+              <h3 class="text-xl font-bold">Туры по России</h3>
+              <p class="text-gray-600 text-sm line-clamp-2">Исследуйте красоты России с нашими премиальными турами по
+                самым живописным местам.</p>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="line-through text-gray-400">21 626 ₽</span>
+                <span class="text-red-500 font-medium">-12%</span>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <p class="text-2xl font-bold">19 031 ₽</p>
+                <button class="btn-accent">Еду!</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600" alt="Туры в Турцию"
+                class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
+              <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
+                <span class="bg-purple-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Популярный</span>
+                <span
+                  class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">Турция</span>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-600 text-sm">(121 отзыв)</span>
+              </div>
+
+              <h3 class="text-xl font-bold">Туры в Турцию</h3>
+              <p class="text-gray-600 text-sm line-clamp-2">Наслаждайтесь ласковым морем и гостеприимством Турции в лучших отелях All Inclusive.</p>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="line-through text-gray-400">65 430 ₽</span>
+                <span class="text-red-500 font-medium">-25%</span>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <p class="text-2xl font-bold">49 073 ₽</p>
+                <button class="btn-accent">Еду!</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1519923834699-ef0b7cde4712?w=600" alt="Туры в ОАЭ"
+                class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
+              <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
+                <span class="bg-green-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Скидка 30%</span>
+                <span
+                  class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">ОАЭ</span>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-600 text-sm">(89 отзывов)</span>
+              </div>
+
+              <h3 class="text-xl font-bold">Туры в ОАЭ</h3>
+              <p class="text-gray-600 text-sm line-clamp-2">Роскошные отели, впечатляющая архитектура и незабываемый шоппинг в Эмиратах.</p>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="line-through text-gray-400">92 800 ₽</span>
+                <span class="text-red-500 font-medium">-30%</span>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <p class="text-2xl font-bold">64 960 ₽</p>
+                <button class="btn-accent">Еду!</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BENEFITS -->
+      <section class="mt-12 mb-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="glass-effect rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform hover:scale-110">
+            <i class="fas fa-cookie-bite fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-800 mb-3">Бонусы для постоянных клиентов</h4>
+          <p class="text-gray-600">Накапливайте бонусные баллы за каждое путешествие и получайте скидки на следующие
+            поездки</p>
+        </div>
+
+        <div class="glass-effect rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-blue-50 text-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform hover:scale-110">
+            <i class="fas fa-star fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-800 mb-3">Лакшери-туры</h4>
+          <p class="text-gray-600">Эксклюзивные предложения для тех, кто ценит высокий уровень комфорта и индивидуальный
+            подход</p>
+        </div>
+
+        <div class="glass-effect rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
+          <div
+            class="bg-green-50 text-green-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform hover:scale-110">
+            <i class="fas fa-piggy-bank fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-800 mb-3">Кредит на отпуск</h4>
+          <p class="text-gray-600">Не откладывайте мечты! Путешествуйте сейчас, а оплачивайте потом с выгодными условиями
+            кредитования</p>
+        </div>
+      </section>
+
+      <!-- SUBSCRIPTION SECTION -->
+      <section class="mt-12 mb-20">
+        <div
+          class="glass-effect rounded-2xl p-8 md:p-12 shadow-xl border border-white/30 backdrop-blur-lg bg-gradient-to-r from-white/20 to-white/10 overflow-hidden relative">
+          <!-- Background decorative elements -->
+          <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+
+          <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Не пропустите самое интересное!</h2>
+            <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">Подпишитесь на рассылку, узнайте первыми о новых
+              спецпредложениях, акциях и горячих новостях</p>
+
+            <form class="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto">
+              <div class="relative flex-1">
+                <input type="text" placeholder="Ваше имя"
+                  class="w-full py-3 px-5 bg-white border border-primary/20 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-white transition-all text-gray-700">
+                <div class="absolute left-3 top-0 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full">Имя
+                </div>
+              </div>
+
+              <div class="relative flex-1">
+                <input type="email" placeholder="Ваш Email"
+                  class="w-full py-3 px-5 bg-white border border-primary/20 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-white transition-all text-gray-700">
+                <div class="absolute left-3 top-0 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full">
+                  Email</div>
+              </div>
+
+              <div class="relative flex-1">
+                <input type="tel" placeholder="Ваш телефон"
+                  class="w-full py-3 px-5 bg-white border border-primary/20 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-white transition-all text-gray-700">
+                <div class="absolute left-3 top-0 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full">
+                  Телефон</div>
+              </div>
+
+              <button type="submit"
+                class="bg-accent text-white py-3 px-8 rounded-xl font-semibold shadow-lg hover:shadow-accent/30 transition-all flex items-center justify-center space-x-2 transform hover:scale-[1.02]">
+                <i class="fas fa-paper-plane"></i>
+                <span>Подписаться</span>
+              </button>
+            </form>
+
+            <div class="mt-6 text-sm text-gray-500 flex items-center justify-center space-x-2">
+              <input type="checkbox" id="privacy" class="rounded text-primary focus:ring-primary">
+              <label for="privacy">Я даю <a href="#" class="text-primary hover:underline">согласие</a> на обработку
+                персональных данных и принимаю условия соглашения</label>
+            </div>
+
+            <div class="flex items-center justify-center space-x-8 mt-10">
+              <div class="flex items-center space-x-2 text-gray-600">
+                <i class="fas fa-shield-alt text-primary text-xl"></i>
+                <span>Надёжная защита данных</span>
+              </div>
+              <div class="flex items-center space-x-2 text-gray-600">
+                <i class="fas fa-ban text-primary text-xl"></i>
+                <span>Никакого спама</span>
+              </div>
+              <div class="flex items-center space-x-2 text-gray-600">
+                <i class="fas fa-gift text-primary text-xl"></i>
+                <span>Эксклюзивные предложения</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US SECTION -->
+      <section class="mt-12 mb-20">
+        <div class="glass-effect rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/30 backdrop-blur-lg overflow-hidden relative">
+          <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-accent">Почему у нас "вкусные" цены?</h2>
+            <p class="text-xl font-semibold text-gray-800 mt-2">Бюро путешествий «Другие места» - это центр прямых продаж ведущих туроператоров</p>
+          </div>
+          
+          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <!-- Left side with badge -->
+            <div class="flex-shrink-0">
+              <div class="relative w-48 h-48">
+                <div class="absolute inset-0 bg-accent/20 rounded-full blur-xl"></div>
+                <div class="relative z-10 bg-blue-500/90 rounded-full w-48 h-48 border-4 border-white/40 flex flex-col items-center justify-center p-6 text-white shadow-xl">
+                  <div class="text-3xl font-bold">Лучшая</div>
+                  <div class="text-3xl font-bold mb-1">цена</div>
+                  <div class="w-32 h-px bg-white/50 my-1"></div>
+                  <div class="w-4 h-4 bg-accent absolute -bottom-10 left-8 rotate-45"></div>
+                  <div class="w-4 h-4 bg-accent absolute -bottom-6 left-20 rotate-45"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right content -->
+            <div class="flex-1 space-y-4">
+              <p class="text-gray-600">Мы лидеры продаж крупнейших туроператоров. Это позволяет нам предлагать туры по эксклюзивным ценам. Мы первыми получаем информацию о наличии мест в Турцию за 7000 рублей или Грецию за 9000 рублей!</p>
+              
+              <div class="flex items-center">
+                <div class="text-xl font-bold text-accent">Работаем только с надежными туроператорами!</div>
+              </div>
+              
+              <div class="mt-3 flex flex-wrap gap-6 items-center justify-center">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Interlux" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="PAC Group" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TUI" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Intourist" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TEZ Tour" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Certifications -->
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-200/50 pt-8">
+            <div class="flex items-center gap-6">
+              <img src="https://drm39.ru/images/main/operators/op_ru.png" alt="Ассоциация Туроператоров России" class="w-30 h-auto object-contain">
+              <div class="text-sm text-gray-600">
+                Работаем только с надежными компаниями, имеющими устойчивое финансовое положение на рынке
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-6">
+              <img src="https://drm39.ru/images/main/operators/op_reestr.png" alt="Реестр туристических агентств" class="w-30 h-auto object-contain">
+              <div class="text-sm text-gray-600">
+                «Другие Места» состоят в реестре туристических агентств России под номером ВС100353
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOTELS SECTION -->
+      <section class="mt-12 mb-20">
+        <div class="flex items-center justify-between mb-8 px-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Отели</h2>
+          <a href="#" class="text-primary font-medium flex items-center hover:underline">
+            Все отели <i class="fas fa-chevron-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+          <!-- Hotel Card 1 -->
+          <article class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600" alt="The Ritz-Carlton"
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
+              <span
+                class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Премиум</span>
+              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+                Турция, Анталия
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-600 text-sm">(246 отзывов)</span>
+              </div>
+
+              <h3 class="text-lg font-bold">The Ritz-Carlton Antalya</h3>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fas fa-utensils text-primary"></i>
+                <span>Всё включено</span>
+                <span class="text-gray-400">|</span>
+                <i class="fas fa-swimming-pool text-primary"></i>
+                <span>3 бассейна</span>
+              </div>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="text-xl font-bold">89 540 ₽</span>
+                <span class="text-sm text-gray-500">за 7 ночей</span>
+              </div>
+
+              <button class="w-full btn-primary text-sm py-2">Забронировать</button>
+            </div>
+          </article>
+
+          <!-- Hotel Card 2 -->
+          <article class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600" alt="Marriott Resort"
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
+              <span
+                class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Выгодно</span>
+              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+                ОАЭ, Дубай
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-600 text-sm">(178 отзывов)</span>
+              </div>
+
+              <h3 class="text-lg font-bold">Marriott Resort & Spa</h3>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fas fa-utensils text-primary"></i>
+                <span>Завтраки</span>
+                <span class="text-gray-400">|</span>
+                <i class="fas fa-umbrella-beach text-primary"></i>
+                <span>1-я линия</span>
+              </div>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="line-through text-gray-400">78 900 ₽</span>
+                <span class="text-red-500 font-medium">-15%</span>
+                <span class="text-xl font-bold">67 065 ₽</span>
+              </div>
+
+              <button class="w-full btn-primary text-sm py-2">Забронировать</button>
+            </div>
+          </article>
+
+          <!-- Hotel Card 3 -->
+          <article class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600" alt="Hilton Garden"
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
+              <span
+                class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Топ продаж</span>
+              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+                Турция, Кемер
+              </div>
+            </div>
+
+            <div class="p-5 space-y-3">
+              <div class="flex items-center space-x-2 text-yellow-500">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <span class="text-gray-600 text-sm">(94 отзыва)</span>
+              </div>
+
+              <h3 class="text-lg font-bold">Hilton Garden Resort</h3>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <i class="fas fa-utensils text-primary"></i>
+                <span>Всё включено</span>
+                <span class="text-gray-400">|</span>
+                <i class="fas fa-child text-primary"></i>
+                <span>Детский клуб</span>
+              </div>
+
+              <div class="flex items-baseline space-x-3">
+                <span class="text-xl font-bold">52 420 ₽</span>
+                <span class="text-sm text-gray-500">за 7 ночей</span>
+              </div>
+
+              <button class="w-full btn-primary text-sm py-2">Забронировать</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- WHATSAPP BAR -->
+  <div
+    class="fixed bottom-0 inset-x-0 bg-primary text-white flex items-center justify-between px-8 py-4 shadow-lg z-40">
+    <div class="flex items-center space-x-4">
+      <i class="fab fa-whatsapp fa-2x"></i>
+      <span class="font-medium">Напиши нам в WhatsApp — поможем выбрать идеальный тур для вас!</span>
+    </div>
+    <a href="#"
+      class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 hover:shadow-md transition-all">Начать
+      чат</a>
+  </div>
+
+  <!-- Simple Animation Script -->
+  <script>
+    // Простая анимация для элементов при скролле
+    document.addEventListener('DOMContentLoaded', function () {
+      const animateOnScroll = function () {
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+          const cardTop = card.getBoundingClientRect().top;
+          const cardBottom = card.getBoundingClientRect().bottom;
+
+          if (cardTop < window.innerHeight && cardBottom > 0) {
+            card.classList.add('animate-slide-up');
+            card.style.opacity = '1';
+          }
+        });
+      };
+
+      // Инициализация
+      animateOnScroll();
+      window.addEventListener('scroll', animateOnScroll);
+      
+      // Mobile menu functionality
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const closeSidebarButton = document.getElementById('close-sidebar');
+      const mobileSidebar = document.getElementById('mobile-sidebar');
+      const sidebarOverlay = document.getElementById('sidebar-overlay');
+      
+      // Open sidebar
+      mobileMenuButton.addEventListener('click', function() {
+        mobileSidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.add('opacity-100');
+        sidebarOverlay.classList.remove('pointer-events-none');
+        document.body.classList.add('overflow-hidden');
+      });
+      
+      // Close sidebar functionality
+      const closeSidebar = function() {
+        mobileSidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.remove('opacity-100');
+        sidebarOverlay.classList.add('pointer-events-none');
+        document.body.classList.remove('overflow-hidden');
+      };
+      
+      closeSidebarButton.addEventListener('click', closeSidebar);
+      sidebarOverlay.addEventListener('click', closeSidebar);
+    });
+  </script>
+</body>
+
+</html>
