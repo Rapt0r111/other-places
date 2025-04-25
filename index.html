@@ -67,11 +67,12 @@
       @apply bg-accent text-white px-6 py-3 rounded-full font-medium hover:bg-accent/90 hover:shadow-lg transform transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2;
     }
 
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       max-width: 100%;
     }
-    
+
     /* Ensure the WHATSAPP BAR doesn't cause horizontal overflow */
     .fixed.bottom-0.inset-x-0 {
       width: 100%;
@@ -133,7 +134,8 @@
           <span class="text-xs text-accent hover:underline whitespace-nowrap">Заказать звонок</span>
         </a>
 
-        <button id="mobile-menu-button" class="xl:hidden text-gray-700 hover:text-primary transition p-2" aria-label="Открыть меню">
+        <button id="mobile-menu-button" class="xl:hidden text-gray-700 hover:text-primary transition p-2"
+          aria-label="Открыть меню">
           <i class="fas fa-bars fa-lg"></i>
         </button>
       </div>
@@ -141,14 +143,15 @@
   </header>
 
   <!-- MOBILE SIDEBAR -->
-  <div id="mobile-sidebar" class="fixed top-0 left-0 bottom-0 w-72 bg-white shadow-lg p-6 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden">
+  <div id="mobile-sidebar"
+    class="fixed top-0 left-0 bottom-0 w-72 bg-white shadow-lg p-6 z-50 transform -translate-x-full transition-transform duration-300 xl:hidden">
     <div class="flex justify-between items-center mb-6">
       <div class="font-bold text-lg text-primary">Другие Места</div>
       <button id="close-sidebar" class="text-gray-700 hover:text-primary p-2">
         <i class="fas fa-times fa-lg"></i>
       </button>
     </div>
-    
+
     <nav class="space-y-5">
       <a href="#"
         class="flex items-center space-x-3 text-gray-800 hover:text-primary hover:translate-x-1 transition-all duration-200 py-2">
@@ -191,7 +194,9 @@
   </div>
 
   <!-- Overlay for mobile sidebar -->
-  <div id="sidebar-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="sidebar-overlay"
+    class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
 
   <!-- SIDEBAR -->
   <aside
@@ -241,16 +246,20 @@
   <main class="pt-28 pb-20 xl:ml-72">
     <div class=" px-4 ">
       <!-- HERO -->
-      <section class="relative bg-cover bg-center rounded-2xl overflow-hidden animate-fade-in shadow-2xl mb-20"> 
+      <section class="relative bg-cover bg-center rounded-2xl overflow-hidden animate-fade-in shadow-2xl mb-20">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80'); min-height:500px; filter: brightness(0.8);"></div>
-        
+        <div class="absolute inset-0 bg-cover bg-center"
+          style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80'); min-height:500px; filter: brightness(0.8);">
+        </div>
+
         <div class="relative z-10 w-full mx-auto text-center py-16 md:py-20 space-y-6 animate-slide-up">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-md px-4">Туры из Калининграда</h1>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-md px-4">Туры из Калининграда
+          </h1>
           <p class="text-white/90 text-lg sm:text-xl px-4">Горящие предложения от турфирмы «Другие места»</p>
-          
+
           <!-- Price timer -->
-          <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 text-white px-4">
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 text-white px-4">
             <span>До обновления цен:</span>
             <div class="flex space-x-3">
               <div class="bg-black/40 rounded-lg px-4 py-2 text-center min-w-[60px]">
@@ -267,9 +276,10 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Search form -->
-          <div class="glass-effect p-4 sm:p-6 md:p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto backdrop-blur-sm bg-white/30 border border-white/30">
+          <div
+            class="glass-effect p-4 sm:p-6 md:p-8 rounded-2xl shadow-2xl max-w-5xl mx-auto backdrop-blur-sm bg-white/30 border border-white/30">
             <form class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               <!-- Toggle Tabs -->
               <div class="col-span-full flex rounded-full overflow-hidden mb-4 shadow-sm">
@@ -406,7 +416,7 @@
             Все направления <i class="fas fa-chevron-right ml-2"></i>
           </a>
         </div>
-        
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Card 1 -->
           <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
@@ -414,7 +424,8 @@
               <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600" alt="Туры по России"
                 class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
               <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
-                <span class="bg-orange-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Горящий</span>
+                <span
+                  class="bg-orange-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Горящий</span>
                 <span
                   class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">Россия</span>
               </div>
@@ -452,7 +463,8 @@
               <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600" alt="Туры в Турцию"
                 class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
               <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
-                <span class="bg-purple-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Популярный</span>
+                <span
+                  class="bg-purple-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Популярный</span>
                 <span
                   class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">Турция</span>
               </div>
@@ -469,7 +481,8 @@
               </div>
 
               <h3 class="text-xl font-bold">Туры в Турцию</h3>
-              <p class="text-gray-600 text-sm line-clamp-2">Наслаждайтесь ласковым морем и гостеприимством Турции в лучших отелях All Inclusive.</p>
+              <p class="text-gray-600 text-sm line-clamp-2">Наслаждайтесь ласковым морем и гостеприимством Турции в
+                лучших отелях All Inclusive.</p>
 
               <div class="flex items-baseline space-x-3">
                 <span class="line-through text-gray-400">65 430 ₽</span>
@@ -489,7 +502,9 @@
               <img src="https://images.unsplash.com/photo-1519923834699-ef0b7cde4712?w=600" alt="Туры в ОАЭ"
                 class="w-full h-56 object-cover transition-transform duration-500 hover:scale-110" />
               <div class="absolute top-0 left-0 w-full p-4 flex justify-between">
-                <span class="bg-green-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Скидка 30%</span>
+                <span
+                  class="bg-green-500/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Скидка
+                  30%</span>
                 <span
                   class="bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">ОАЭ</span>
               </div>
@@ -506,7 +521,8 @@
               </div>
 
               <h3 class="text-xl font-bold">Туры в ОАЭ</h3>
-              <p class="text-gray-600 text-sm line-clamp-2">Роскошные отели, впечатляющая архитектура и незабываемый шоппинг в Эмиратах.</p>
+              <p class="text-gray-600 text-sm line-clamp-2">Роскошные отели, впечатляющая архитектура и незабываемый
+                шоппинг в Эмиратах.</p>
 
               <div class="flex items-baseline space-x-3">
                 <span class="line-through text-gray-400">92 800 ₽</span>
@@ -550,7 +566,8 @@
             <i class="fas fa-piggy-bank fa-2x"></i>
           </div>
           <h4 class="text-xl font-semibold text-gray-800 mb-3">Кредит на отпуск</h4>
-          <p class="text-gray-600">Не откладывайте мечты! Путешествуйте сейчас, а оплачивайте потом с выгодными условиями
+          <p class="text-gray-600">Не откладывайте мечты! Путешествуйте сейчас, а оплачивайте потом с выгодными
+            условиями
             кредитования</p>
         </div>
       </section>
@@ -572,7 +589,8 @@
               <div class="relative flex-1">
                 <input type="text" placeholder="Ваше имя"
                   class="w-full py-3 px-5 bg-white border border-primary/20 rounded-xl shadow-sm focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-white transition-all text-gray-700">
-                <div class="absolute left-3 top-0 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full">Имя
+                <div class="absolute left-3 top-0 -mt-2.5 bg-white text-xs font-medium text-primary px-2 rounded-full">
+                  Имя
                 </div>
               </div>
 
@@ -623,18 +641,21 @@
 
       <!-- WHY CHOOSE US SECTION -->
       <section class="mt-12 mb-20">
-        <div class="glass-effect rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/30 backdrop-blur-lg overflow-hidden relative">
+        <div
+          class="glass-effect rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/30 backdrop-blur-lg overflow-hidden relative">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl font-bold text-accent">Почему у нас "вкусные" цены?</h2>
-            <p class="text-xl font-semibold text-gray-800 mt-2">Бюро путешествий «Другие места» - это центр прямых продаж ведущих туроператоров</p>
+            <p class="text-xl font-semibold text-gray-800 mt-2">Бюро путешествий «Другие места» - это центр прямых
+              продаж ведущих туроператоров</p>
           </div>
-          
+
           <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
             <!-- Left side with badge -->
             <div class="flex-shrink-0">
               <div class="relative w-48 h-48">
                 <div class="absolute inset-0 bg-accent/20 rounded-full blur-xl"></div>
-                <div class="relative z-10 bg-blue-500/90 rounded-full w-48 h-48 border-4 border-white/40 flex flex-col items-center justify-center p-6 text-white shadow-xl">
+                <div
+                  class="relative z-10 bg-blue-500/90 rounded-full w-48 h-48 border-4 border-white/40 flex flex-col items-center justify-center p-6 text-white shadow-xl">
                   <div class="text-3xl font-bold">Лучшая</div>
                   <div class="text-3xl font-bold mb-1">цена</div>
                   <div class="w-32 h-px bg-white/50 my-1"></div>
@@ -643,36 +664,45 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Right content -->
             <div class="flex-1 space-y-4">
-              <p class="text-gray-600">Мы лидеры продаж крупнейших туроператоров. Это позволяет нам предлагать туры по эксклюзивным ценам. Мы первыми получаем информацию о наличии мест в Турцию за 7000 рублей или Грецию за 9000 рублей!</p>
-              
+              <p class="text-gray-600">Мы лидеры продаж крупнейших туроператоров. Это позволяет нам предлагать туры по
+                эксклюзивным ценам. Мы первыми получаем информацию о наличии мест в Турцию за 7000 рублей или Грецию за
+                9000 рублей!</p>
+
               <div class="flex items-center">
                 <div class="text-xl font-bold text-accent">Работаем только с надежными туроператорами!</div>
               </div>
-              
+
               <div class="mt-3 flex flex-wrap gap-6 items-center justify-center">
-                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Interlux" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
-                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="PAC Group" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
-                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TUI" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
-                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Intourist" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
-                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TEZ Tour" class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Interlux"
+                  class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="PAC Group"
+                  class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TUI"
+                  class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="Intourist"
+                  class="h-8 opacity-80 hover:opacity-100 transition-opacity">
+                <img src="https://drm39.ru/upload/iblock/4c5/4c56ff9d02be6f6c9d12981a908d2eca.png" alt="TEZ Tour"
+                  class="h-8 opacity-80 hover:opacity-100 transition-opacity">
               </div>
             </div>
           </div>
-          
+
           <!-- Certifications -->
           <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-200/50 pt-8">
             <div class="flex items-center gap-6">
-              <img src="https://drm39.ru/images/main/operators/op_ru.png" alt="Ассоциация Туроператоров России" class="w-30 h-auto object-contain">
+              <img src="https://drm39.ru/images/main/operators/op_ru.png" alt="Ассоциация Туроператоров России"
+                class="w-30 h-auto object-contain">
               <div class="text-sm text-gray-600">
                 Работаем только с надежными компаниями, имеющими устойчивое финансовое положение на рынке
               </div>
             </div>
-            
+
             <div class="flex items-center gap-6">
-              <img src="https://drm39.ru/images/main/operators/op_reestr.png" alt="Реестр туристических агентств" class="w-30 h-auto object-contain">
+              <img src="https://drm39.ru/images/main/operators/op_reestr.png" alt="Реестр туристических агентств"
+                class="w-30 h-auto object-contain">
               <div class="text-sm text-gray-600">
                 «Другие Места» состоят в реестре туристических агентств России под номером ВС100353
               </div>
@@ -689,7 +719,7 @@
             Все отели <i class="fas fa-chevron-right ml-2"></i>
           </a>
         </div>
-        
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           <!-- Hotel Card 1 -->
           <article class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
@@ -698,7 +728,8 @@
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
               <span
                 class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Премиум</span>
-              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+              <div
+                class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
                 Турция, Анталия
               </div>
             </div>
@@ -738,7 +769,8 @@
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
               <span
                 class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Выгодно</span>
-              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+              <div
+                class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
                 ОАЭ, Дубай
               </div>
             </div>
@@ -778,8 +810,10 @@
               <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600" alt="Hilton Garden"
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110" />
               <span
-                class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Топ продаж</span>
-              <div class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
+                class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Топ
+                продаж</span>
+              <div
+                class="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 text-xs px-3 py-1 rounded-full shadow-sm">
                 Турция, Кемер
               </div>
             </div>
@@ -815,16 +849,11 @@
       </section>
     </div>
   </main>
-
-  <!-- WHATSAPP BAR -->
   <div
-    class="fixed bottom-0 inset-x-0 bg-primary text-white flex items-center justify-between px-8 py-4 shadow-lg z-40">
-    <div class="flex items-center space-x-4">
-      <i class="fab fa-whatsapp fa-2x"></i>
-      <span class="font-medium">Напиши нам в WhatsApp — поможем выбрать идеальный тур для вас!</span>
-    </div>
+    class="fixed bottom-0 inset-x-0 bg-primary text-white flex items-center justify-end px-8 py-4 shadow-lg z-40">
+
     <a href="#"
-      class="bg-white text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 hover:shadow-md transition-all">Начать
+      class="bg-blue-500/90 text-primary px-6 py-2 rounded-full font-medium hover:bg-gray-100 hover:shadow-md transition-all">Начать
       чат</a>
   </div>
 
@@ -848,29 +877,29 @@
       // Инициализация
       animateOnScroll();
       window.addEventListener('scroll', animateOnScroll);
-      
+
       // Mobile menu functionality
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const closeSidebarButton = document.getElementById('close-sidebar');
       const mobileSidebar = document.getElementById('mobile-sidebar');
       const sidebarOverlay = document.getElementById('sidebar-overlay');
-      
+
       // Open sidebar
-      mobileMenuButton.addEventListener('click', function() {
+      mobileMenuButton.addEventListener('click', function () {
         mobileSidebar.classList.remove('-translate-x-full');
         sidebarOverlay.classList.add('opacity-100');
         sidebarOverlay.classList.remove('pointer-events-none');
         document.body.classList.add('overflow-hidden');
       });
-      
+
       // Close sidebar functionality
-      const closeSidebar = function() {
+      const closeSidebar = function () {
         mobileSidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.remove('opacity-100');
         sidebarOverlay.classList.add('pointer-events-none');
         document.body.classList.remove('overflow-hidden');
       };
-      
+
       closeSidebarButton.addEventListener('click', closeSidebar);
       sidebarOverlay.addEventListener('click', closeSidebar);
     });
